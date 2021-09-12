@@ -10,7 +10,13 @@ namespace Address_book
             Console.WriteLine("Address Book Program");
             //Object for the Operations Class
             Nlog option = new Nlog();
-            option.Add();
+            Console.WriteLine("How many contacts want to add : ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for(int i=0;i<n;i++)
+            {  
+               option.Add(); 
+            }
+            
             
         }
     }
