@@ -12,10 +12,10 @@ namespace Address_book
 
             while (defcount == 0)
             {
-                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  5:Exit");
+                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5:Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());//variable for taking choice from the user
-                //Switch Case for doing Operations
-                switch (choice)
+                
+                switch (choice)  //switch case
                 {
                     case 1:
                         Console.WriteLine("How many contacts want to add : ");
@@ -26,7 +26,7 @@ namespace Address_book
                         }
                         break;
                     case 2:
-                        option.Print();//To Print Contact 
+                        option.Print();//to print contact 
                         break;
                     case 3:
                         Console.WriteLine("Enter name of existing contact which you want to edit :-");
@@ -40,10 +40,15 @@ namespace Address_book
                         string stateN = Console.ReadLine();
                         int zipN = Convert.ToInt32(Console.ReadLine());
                         int no = Convert.ToInt32(Console.ReadLine());
-                        option.Edit(name, first,last, add,cityN, stateN,zipN, no);//Edit the Contact by passing parameters from users in the method
+                        option.Edit(name, first,last, add,cityN, stateN,zipN, no);//to edit contact details
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter First Name To Delete:");
+                        string firstname = Console.ReadLine();
+                        option.Delete(firstname);//to delete contact
                         break;
                     default:
-                        Console.WriteLine("End");//Default Condition For Exit the while loop
+                        Console.WriteLine("End");//default condition
                         defcount++;
                         break;
                 }

@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Address_book
-{ 
-    public class Nlog
+{
+    public class Contacts  //created class contact
     {
-
-        public class Contacts
-        {
-            public string first_name { get; set; }
-            public string last_name { get; set; }
-            public string address { get; set; }
-            public string city { get; set; }
-            public string state { get; set; }
-            public int zip { get; set; }
-            public int phone_no { get; set; }
-            public string email { get; set; }
-        }
+        //by using encapsulation
+        public string first_name { get; set; } //property
+        public string last_name { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public int zip { get; set; }
+        public int phone_no { get; set; }
+        public string email { get; set; }
+    }
+    public class Nlog //created class for different oprations
+    {
 
         //list declaration to store the personal details
         List<Contacts> listcontacts = new List<Contacts>();
@@ -56,7 +56,7 @@ namespace Address_book
                 });
         }
 
-        public void Print()//Print() method 
+        public void Print()//Print method 
         {
             foreach (var i in listcontacts)
             {
@@ -70,7 +70,7 @@ namespace Address_book
                 Console.WriteLine("Email ID : " + i.email);
             }
         }
-        //Edit() method 
+        //Edit method 
         public void Edit(string name, string first, string last, string add, string cityN, string stateN, int zipN, int no)
         {
             int indexOfContact = -1;
@@ -92,6 +92,20 @@ namespace Address_book
                 editContact.phone_no = no;
                 listcontacts[indexOfContact] = editContact;  
               
+        }
+
+        public void Delete(string firstname) //Delete method
+        {
+            int indexOfContact = -1;
+            for (int i = 0; i < listcontacts.Count; i++)
+            {
+                if (listcontacts[i].first_name == firstname)
+                {
+                    indexOfContact = i;
+                }
+            }
+            listcontacts.RemoveAt(indexOfContact);
+               
         }
 
     }
