@@ -18,11 +18,12 @@ namespace Address_book
             public int phone_no { get; set; }
             public string email { get; set; }
         }
-        public void Add()//add method for contact details
-            {
-                //list declaration to store the personal details
-                List<Contacts> listcontacts = new List<Contacts>();
 
+        //list declaration to store the personal details
+        List<Contacts> listcontacts = new List<Contacts>();
+
+        public void Add()//add method 
+            {
                 Console.WriteLine("Enter Personal Details : ");
                 Console.Write("First Name : ");
                 string first_name = Console.ReadLine();
@@ -54,8 +55,46 @@ namespace Address_book
                     email = email
                 });
         }
-            
+
+        public void Print()//Print() method 
+        {
+            foreach (var i in listcontacts)
+            {
+                Console.WriteLine("First Name : " + i.first_name);
+                Console.WriteLine("Last Name : " + i.last_name);
+                Console.WriteLine("Address : " + i.address);
+                Console.WriteLine("City Name : " + i.city);
+                Console.WriteLine("State Name : " + i.state);
+                Console.WriteLine("Zip Code : " + i.zip);
+                Console.WriteLine("Phone No. : " + i.phone_no);
+                Console.WriteLine("Email ID : " + i.email);
+            }
         }
+        //Edit() method 
+        public void Edit(string name, string first, string last, string add, string cityN, string stateN, int zipN, int no)
+        {
+            int indexOfContact = -1;
+            for (int i = 0; i < listcontacts.Count; i++)
+            {
+                if (listcontacts[i].first_name == name)
+                {
+                    indexOfContact = i;
+                }
+            }
+            
+                var editContact = listcontacts[indexOfContact];
+                editContact.first_name = first;
+                editContact.last_name = last;
+                editContact.address = add;
+                editContact.city = cityN;
+                editContact.state = stateN;
+                editContact.zip = zipN;
+                editContact.phone_no = no;
+                listcontacts[indexOfContact] = editContact;  
+              
+        }
+
+    }
 
   
 }
