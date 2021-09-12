@@ -22,6 +22,8 @@ namespace Address_book
         //list declaration to store the personal details
         List<Contacts> listcontacts = new List<Contacts>();
 
+        Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();//dictionary created
+
         public void Add()//add method 
             {
                 Console.WriteLine("Enter Personal Details : ");
@@ -58,16 +60,29 @@ namespace Address_book
 
         public void Print()//Print method 
         {
-            foreach (var i in listcontacts)
+            for (int i = 0; i < listcontacts.Count; i++)
             {
-                Console.WriteLine("First Name : " + i.first_name);
-                Console.WriteLine("Last Name : " + i.last_name);
-                Console.WriteLine("Address : " + i.address);
-                Console.WriteLine("City Name : " + i.city);
-                Console.WriteLine("State Name : " + i.state);
-                Console.WriteLine("Zip Code : " + i.zip);
-                Console.WriteLine("Phone No. : " + i.phone_no);
-                Console.WriteLine("Email ID : " + i.email);
+                Contacts contact = listcontacts[i];
+
+                if (!addressBook.ContainsKey(contact.first_name))//if condition to check the key is present or not
+                {
+                    addressBook.Add(contact.first_name, contact);//if not the add into the addressbook
+                }
+                else
+                {
+                    Console.WriteLine("This Name {0} is already there", contact.first_name);
+                }
+            }
+            foreach (var i in addressBook)
+            {
+                Console.WriteLine("First Name : " + i.Key);
+                Console.WriteLine("Last Name : " + i.Value.last_name);
+                Console.WriteLine("Address : " + i.Value.address);
+                Console.WriteLine("City Name : " + i.Value.city);
+                Console.WriteLine("State Name : " + i.Value.state);
+                Console.WriteLine("Zip Code : " + i.Value.zip);
+                Console.WriteLine("Phone No. : " + i.Value.phone_no);
+                Console.WriteLine("Email ID : " + i.Value.email);
             }
         }
         //Edit method 
