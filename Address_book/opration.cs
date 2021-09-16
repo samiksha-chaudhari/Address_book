@@ -16,7 +16,7 @@ namespace Address_book
         public int phone_no { get; set; }
         public string email { get; set; }
     }
-    public class Nlog //created class for different oprations
+    public class opration //created class for different oprations
     {
 
         //list declaration to store the personal details

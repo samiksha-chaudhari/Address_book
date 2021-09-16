@@ -7,7 +7,7 @@ namespace Address_book
         static void Main(string[] args)
         {
             Console.WriteLine("Address Book Program");
-            Nlog option = new Nlog();  //Creating new object
+            opration option = new opration();  //Creating new object
             int defcount = 0;//counter to break the while loop
 
             while (defcount == 0)
