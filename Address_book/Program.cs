@@ -12,7 +12,7 @@ namespace Address_book
 
             while (defcount == 0)
             {
-                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5:Exit");
+                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5.Add Existing Contact  6.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());//variable for taking choice from the user
                 
                 switch (choice)  //switch case
@@ -46,6 +46,69 @@ namespace Address_book
                         Console.WriteLine("Enter First Name To Delete:");
                         string firstname = Console.ReadLine();
                         option.Delete(firstname);//to delete contact
+                        break;
+                    case 5:
+                        option.listcontacts.Add(new Contacts()
+                        {
+                            first_name = "samiksha",
+                            last_name = "chaudhari",
+                            address = "jalgaon",
+                            city = "jalgaon",
+                            state = "maharashtra",
+                            zip = 425001,
+                            phone_no = 56982685,
+                            email = "samiksha@gmail.com"
+                        });
+                        
+                        option.listcontacts.Add(new Contacts()
+                        {
+                            first_name = "nikita",
+                            last_name = "arora",
+                            address = "mumbai",
+                            city = "mumbai",
+                            state = "maharashtra",
+                            zip = 457029,
+                            phone_no = 896523895,
+                            email = "nikita@gmail.com"
+                        });
+                       
+                        option.listcontacts.Add(new Contacts()
+                        {
+                            first_name = "aaaradha",
+                            last_name = "attarde",
+                            address = "pune",
+                            city = "pune",
+                            state = "maharashtra",
+                            zip = 586535,
+                            phone_no = 655324895,
+                            email = "tushar@gmail.com"
+                        });
+                        
+                        option.listcontacts.Add(new Contacts()
+                        {
+                            first_name = "mayur",
+                            last_name = "chaudhari",
+                            address = "mumbai",
+                            city = "mumbai",
+                            state = "maharashtra",
+                            zip = 478653,
+                            phone_no = 865445321,
+                            email = "mayur@gmail.com"
+                        });
+                        
+                        option.listcontacts.Add(new Contacts()
+                        {
+                            first_name = "ashwini",
+                            last_name = "mahajan",
+                            address = "aurangabad",
+                            city = "aurangabad",
+                            state = "maharashtra",
+                            zip = 446565,
+                            phone_no = 545454487,
+                            email = "ashwini@gmail.com"
+                        });
+
+
                         break;
                     default:
                         Console.WriteLine("End");//default condition

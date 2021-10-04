@@ -4,23 +4,11 @@ using System.Text;
 
 namespace Address_book
 {
-    public class Contacts  //created class contact
-    {
-        //by using encapsulation
-        public string first_name { get; set; } //property
-        public string last_name { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public int zip { get; set; }
-        public int phone_no { get; set; }
-        public string email { get; set; }
-    }
+    
     public class opration //created class for different oprations
     {
-
         //list declaration to store the personal details
-        List<Contacts> listcontacts = new List<Contacts>();
+       public List<Contacts> listcontacts = new List<Contacts>();
 
         Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();//dictionary created
 
@@ -83,6 +71,7 @@ namespace Address_book
                 Console.WriteLine("Zip Code : " + i.Value.zip);
                 Console.WriteLine("Phone No. : " + i.Value.phone_no);
                 Console.WriteLine("Email ID : " + i.Value.email);
+                Console.WriteLine("\n");
             }
         }
         //Edit method 
