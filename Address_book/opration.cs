@@ -11,8 +11,12 @@ namespace Address_book
        public List<Contacts> listcontacts = new List<Contacts>();
 
         Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();//dictionary created
+        List<Contacts> searchlist = new List<Contacts>();
 
-        public void Add()//add method 
+        /// <summary>
+        /// method to add data 
+        /// </summary>
+        public void Add() 
             {
                 Console.WriteLine("Enter Personal Details : ");
                 Console.Write("First Name : ");
@@ -46,7 +50,10 @@ namespace Address_book
                 });
         }
 
-        public void Print()//Print method 
+        /// <summary>
+        /// method to print data
+        /// </summary>
+        public void Print() 
         {
             for (int i = 0; i < listcontacts.Count; i++)
             {
@@ -74,7 +81,18 @@ namespace Address_book
                 Console.WriteLine("\n");
             }
         }
-        //Edit method 
+
+        /// <summary>
+        /// Edit method 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="first"></param>
+        /// <param name="last"></param>
+        /// <param name="add"></param>
+        /// <param name="cityN"></param>
+        /// <param name="stateN"></param>
+        /// <param name="zipN"></param>
+        /// <param name="no"></param>
         public void Edit(string name, string first, string last, string add, string cityN, string stateN, int zipN, int no)
         {
             int indexOfContact = -1;
@@ -98,6 +116,10 @@ namespace Address_book
               
         }
 
+        /// <summary>
+        /// method to delete contact
+        /// </summary>
+        /// <param name="firstname"></param>
         public void Delete(string firstname) //Delete method
         {
             int indexOfContact = -1;
@@ -110,6 +132,21 @@ namespace Address_book
             }
             listcontacts.RemoveAt(indexOfContact);
                
+        }
+        /// <summary>
+        /// method to search person first name by city or state
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <param name="statename"></param>
+
+        public void SearchContact(string cityName, string statename)
+        {
+            searchlist = listcontacts.FindAll(x => (x.city == cityName || x.state == statename));//Lambda Expression
+
+            foreach (Contacts i in searchlist)
+            {
+                Console.WriteLine("First Name : " + i.first_name);
+            }
         }
 
     }
