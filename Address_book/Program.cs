@@ -12,7 +12,7 @@ namespace Address_book
 
             while (defcount == 0)
             {
-                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5.Search by City  6.Add Existing Contact  7.Exit");
+                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5.Search by Contact  6.Search City State  7.Add Existing Contact  7.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());//variable for taking choice from the user
                 
                 switch (choice)  //switch case
@@ -50,13 +50,23 @@ namespace Address_book
                     case 5:
                         Console.WriteLine("Search person first name by city or state");
                         Console.Write("Enter City Name : ");
-                        string cname = Console.ReadLine();
+                        string city = Console.ReadLine();
 
                         Console.WriteLine("Enter State Name : ");
-                        string sname = Console.ReadLine();
-                        option.SearchContact(cname, sname);
+                        string state = Console.ReadLine();
+                        option.SearchContact(city, state);
                         break;
                     case 6:
+                        Console.WriteLine("Search person first name by city or state");
+                        Console.Write("Enter City Name : ");
+                        string city1 = Console.ReadLine();
+
+                        Console.WriteLine("Enter State Name : ");
+                        string state1 = Console.ReadLine();
+                        option.SearchCityState(city1, state1);
+
+                        break;
+                    case 7:
                         option.listcontacts.Add(new Contacts()
                         {
                             first_name = "samiksha",

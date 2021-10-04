@@ -12,6 +12,8 @@ namespace Address_book
 
         Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();//dictionary created
         List<Contacts> searchlist = new List<Contacts>();
+        List<Contacts> listCity = new List<Contacts>();
+        List<Contacts> listState = new List<Contacts>();
 
         /// <summary>
         /// method to add data 
@@ -139,13 +141,28 @@ namespace Address_book
         /// <param name="cityName"></param>
         /// <param name="statename"></param>
 
-        public void SearchContact(string cityName, string statename)
+        public void SearchContact(string city, string state)
         {
-            searchlist = listcontacts.FindAll(x => (x.city == cityName || x.state == statename));//Lambda Expression
+            searchlist = listcontacts.FindAll(x => (x.city == city || x.state == state));//Lambda Expression
 
             foreach (Contacts i in searchlist)
             {
                 Console.WriteLine("First Name : " + i.first_name);
+            }
+        }
+        
+        public void SearchCityState(string cityName, string stateName)
+        {
+            listCity = listcontacts.FindAll(x => (x.city == cityName));//to check the names in city
+
+            foreach (Contacts i in listCity)
+            {
+                Console.WriteLine("person live in {0} City is : {1}", cityName, i.first_name);
+            }
+            listState = listcontacts.FindAll(x => (x.state == stateName));//to check the Names in State
+            foreach (Contacts i in listState)
+            {
+                Console.WriteLine("person live in {0} State is : {1}", stateName, i.first_name);
             }
         }
 
