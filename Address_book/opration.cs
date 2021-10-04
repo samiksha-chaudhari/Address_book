@@ -140,7 +140,6 @@ namespace Address_book
         /// </summary>
         /// <param name="cityName"></param>
         /// <param name="statename"></param>
-
         public void SearchContact(string city, string state)
         {
             searchlist = listcontacts.FindAll(x => (x.city == city || x.state == state));//Lambda Expression
@@ -151,19 +150,32 @@ namespace Address_book
             }
         }
         
+        /// <summary>
+        /// method to search person first name by city and state
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <param name="stateName"></param>
         public void SearchCityState(string cityName, string stateName)
         {
+            int a = 0;
+            int b = 0;
+
             listCity = listcontacts.FindAll(x => (x.city == cityName));//to check the names in city
 
             foreach (Contacts i in listCity)
             {
                 Console.WriteLine("person live in {0} City is : {1}", cityName, i.first_name);
+                a++;
             }
+            Console.WriteLine("\nTotal number of person live in city {0} is : {1}",cityName ,+a);
+
             listState = listcontacts.FindAll(x => (x.state == stateName));//to check the Names in State
             foreach (Contacts i in listState)
             {
                 Console.WriteLine("person live in {0} State is : {1}", stateName, i.first_name);
+                b++;
             }
+            Console.WriteLine("\nTotal number of person live in state {0} is : {1}", stateName, +b);
         }
 
     }

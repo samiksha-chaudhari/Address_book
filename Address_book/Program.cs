@@ -22,7 +22,7 @@ namespace Address_book
                         int n = Convert.ToInt32(Console.ReadLine());
                         for (int i = 0; i < n; i++)
                         {
-                            option.Add();
+                            option.Add();//to add contact
                         }
                         break;
                     case 2:
@@ -54,7 +54,8 @@ namespace Address_book
 
                         Console.WriteLine("Enter State Name : ");
                         string state = Console.ReadLine();
-                        option.SearchContact(city, state);
+
+                        option.SearchContact(city, state);//searching person name base on city or state
                         break;
                     case 6:
                         Console.WriteLine("Search person first name by city or state");
@@ -63,7 +64,7 @@ namespace Address_book
 
                         Console.WriteLine("Enter State Name : ");
                         string state1 = Console.ReadLine();
-                        option.SearchCityState(city1, state1);
+                        option.SearchCityState(city1, state1);//searching and counting person live in city and state
 
                         break;
                     case 7:
