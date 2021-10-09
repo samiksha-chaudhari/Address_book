@@ -15,8 +15,7 @@ namespace Address_book
         List<Contacts> searchlist = new List<Contacts>();
         List<Contacts> listCity = new List<Contacts>();
         List<Contacts> listState = new List<Contacts>();
-        //list for sorting elememts
-        List<Contacts> SortedList = new List<Contacts>();
+        
 
         /// <summary>
         /// method to add data 
@@ -181,15 +180,47 @@ namespace Address_book
             Console.WriteLine("\nTotal number of person live in state {0} is : {1}", stateName, +b);
         }
 
-        public void SortByPersonName()
+        
+        public void ChooseSort()
         {
-            Dictionary<string, Contacts> sortList = addressBook.OrderBy(x => x.Value.first_name).ToDictionary(x => x.Key, x => x.Value);
-            foreach (var element in sortList)
+            Console.WriteLine("Sort By:-");
+            Console.WriteLine("1.Name\n2.City\n3.State\n4.ZipCode");
+            var choice = Console.ReadLine();
+            switch (choice)
             {
-                Console.WriteLine(element.Value.first_name + " " + element.Value.last_name );
+                case "1":
+                    Dictionary<string, Contacts> sortList = addressBook.OrderBy(x => x.Value.first_name).ToDictionary(x => x.Key, x => x.Value);
+                    foreach (var element in sortList)
+                    {
+                        Console.WriteLine(element.Value.first_name + " " + element.Value.last_name + " " + element.Value.phone_no);
+                    }
+                    break;
+                case "2":
+                    Dictionary<string, Contacts> sortCity = addressBook.OrderBy(x => x.Value.city).ToDictionary(x => x.Key, x => x.Value);
+                    foreach (var element in sortCity)
+                    {
+                        Console.WriteLine(element.Value.first_name + " " + element.Value.last_name + " " + element.Value.city + " " + element.Value.phone_no);
+                    }
+                    break;
+                case "3":
+                    Dictionary<string, Contacts> sortState = addressBook.OrderBy(x => x.Value.state).ToDictionary(x => x.Key, x => x.Value);
+                    foreach (var element in sortState)
+                    {
+                        Console.WriteLine(element.Value.first_name + " " + element.Value.last_name + " " + element.Value.state + " " + element.Value.phone_no);
+                    }
+                    break;
+                case "4":
+                    Dictionary<string, Contacts> sortZip = addressBook.OrderBy(x => x.Value.zip).ToDictionary(x => x.Key, x => x.Value);
+                    foreach (var element in sortZip)
+                    {
+                        Console.WriteLine(element.Value.first_name + " " + element.Value.last_name + " " + element.Value.state + " " + element.Value.zip + " " + element.Value.phone_no);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid choise");
+                    break;
             }
         }
-    }
 
-  
+    }
 }
