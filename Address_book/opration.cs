@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Address_book
 {
@@ -14,6 +15,8 @@ namespace Address_book
         List<Contacts> searchlist = new List<Contacts>();
         List<Contacts> listCity = new List<Contacts>();
         List<Contacts> listState = new List<Contacts>();
+        //list for sorting elememts
+        List<Contacts> SortedList = new List<Contacts>();
 
         /// <summary>
         /// method to add data 
@@ -178,6 +181,14 @@ namespace Address_book
             Console.WriteLine("\nTotal number of person live in state {0} is : {1}", stateName, +b);
         }
 
+        public void SortByPersonName()
+        {
+            Dictionary<string, Contacts> sortList = addressBook.OrderBy(x => x.Value.first_name).ToDictionary(x => x.Key, x => x.Value);
+            foreach (var element in sortList)
+            {
+                Console.WriteLine(element.Value.first_name + " " + element.Value.last_name );
+            }
+        }
     }
 
   
