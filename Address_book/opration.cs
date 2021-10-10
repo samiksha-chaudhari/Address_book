@@ -15,7 +15,8 @@ namespace Address_book
         List<Contacts> searchlist = new List<Contacts>();
         List<Contacts> listCity = new List<Contacts>();
         List<Contacts> listState = new List<Contacts>();
-        
+        //list for sorting elememts
+        List<Contacts> SortedList = new List<Contacts>();
 
         /// <summary>
         /// method to add data 
@@ -181,6 +182,7 @@ namespace Address_book
         }
 
         
+
         public void ChooseSort()
         {
             Console.WriteLine("Sort By:-");
