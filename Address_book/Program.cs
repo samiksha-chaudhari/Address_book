@@ -12,7 +12,7 @@ namespace Address_book
 
             while (defcount == 0)
             {
-                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5.Search by Contact  6.Search City State  7.Add Existing Contact  8.Sort By Properties  9.FileIO Write  10.Exit");
+                Console.WriteLine("1:Add Contact  2:Print Contact  3:Edit Contact  4:Delete  5.Search by Contact  6.Search City State  7.Add Existing Contact  8.Sort By Properties  9.Write File  10.Read File  11.Csv File  12.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());//variable for taking choice from the user
                 
                 switch (choice)  //switch case
@@ -134,7 +134,15 @@ namespace Address_book
                     case 8:
                         option.ChooseSort();
                         break;
-                    
+                    case 9:
+                        option.StreamWriteFile();
+                        break;
+                    case 10:
+                        option.StreamReadFile();
+                        break;
+                    case 11:
+                        option.WriteContactsCsv();
+                        break;
                     default:
                         Console.WriteLine("End");//default condition
                         defcount++;

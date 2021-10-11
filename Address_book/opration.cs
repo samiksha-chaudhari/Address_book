@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.IO;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
 
 namespace Address_book
 {
@@ -225,8 +228,87 @@ namespace Address_book
             }
         }
 
+        public string FilePath = @"D:\new1\bridgelabz_fellowship\Address_book\Address_book\StoredContact.txt";
+        public string CSVPath = @"D:\new1\bridgelabz_fellowship\Address_book\Address_book\CSVFileData.csv";
 
-       
+        /// <summary>
+        /// write the data using file IO
+        /// </summary>
+        public void StreamWriteFile()
+        {
+            if (File.Exists(FilePath))
+            {
+                using (StreamWriter streamWriter = File.AppendText(FilePath))
+                {
+                    foreach (Contacts person in listcontacts)
+                    {
+                        streamWriter.WriteLine("\nFirstName: " + person.first_name);
+                        streamWriter.WriteLine("LastName: " + person.last_name);
+                        streamWriter.WriteLine("Address: " + person.address);
+                        streamWriter.WriteLine("City    : " + person.city);
+                        streamWriter.WriteLine("State   : " + person.state);
+                        streamWriter.WriteLine("ZipCode: " + person.zip);
+                        streamWriter.WriteLine("PhoneNum: " + person.phone_no);
+                        streamWriter.WriteLine("Email   : " + person.email);
+                    }
+                    streamWriter.Close();
+                }
+                Console.WriteLine("Data Added in to the File");
+            }
+        }
+        /// <summary>
+        /// Read the file using file IO
+        /// </summary>
+        public void StreamReadFile()
+        {
+            if (File.Exists(FilePath))
+            {
+                using (StreamReader streamReader = File.OpenText(FilePath))
+                {
+                    String ContactDetails = "";
+                    while ((ContactDetails = streamReader.ReadLine()) != null)
+                    {
+                        Console.WriteLine((ContactDetails));
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No such file exists");
+            }
+        }
+
+        /// <summary>
+        ///method to write the file using csv 
+        /// </summary>     
+        public void WriteContactsCsv()
+        {
+            using (StreamWriter stream = new StreamWriter(CSVPath))
+            using (CsvWriter csvWriter = new CsvWriter(stream, CultureInfo.InvariantCulture))
+            {
+                csvWriter.WriteRecords(listcontacts);
+            }
+            Console.WriteLine("\nData line added to CSV file...");
+
+            ReadContactsCSV();
+        }
+
+        /// <summary>
+        /// method to read the file using csv 
+        /// </summary>
+        public void ReadContactsCSV()
+        {    
+            using (StreamReader reader = new StreamReader(CSVPath))
+            using (var read = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var contacts = read.GetRecords<Contacts>().ToList();
+                foreach (Contacts contact in contacts)
+                {
+                    Console.WriteLine(contact.first_name + "," + contact.last_name + "," + contact.address + "," + contact.city + "," + contact.state + "," + contact.zip + "," + contact.phone_no + "," + contact.email);
+                }
+            }
+        }
+
 
 
 
