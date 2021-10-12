@@ -316,19 +316,7 @@ namespace Address_book
         /// write to file using JSON
         /// </summary>
         /// <param name="addressBookDictionary"></param>
-        public void WriteToFileJSON()
-        {
-            //perfroming serialization on inventoryList
-            string json = JsonConvert.SerializeObject(listcontacts);
-            Console.WriteLine("\nSuccessfully added to JSON file.");
-        }
-        public void ReadFromFileJSON()
-        {
-            //Contacts contact = JsonConvert.DeserializeObject<Contacts>(File.ReadAllText(JSONPath));
-            List<Contacts> returnDataObj = JsonConvert.DeserializeObject<List<Contacts>>(File.ReadAllText(JSONPath));
-            Console.WriteLine(returnDataObj.ToString());
-        }
-
+       
         public void convertToJson()
         {
             JSON.WriteToJson(addressBook);
