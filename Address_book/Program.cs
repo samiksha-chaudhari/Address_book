@@ -143,6 +143,9 @@ namespace Address_book
                     case 11:
                         option.WriteContactsCsv();
                         break;
+                    case 12:
+                        option.convertToJson();
+                        break;
                     default:
                         Console.WriteLine("End");//default condition
                         defcount++;

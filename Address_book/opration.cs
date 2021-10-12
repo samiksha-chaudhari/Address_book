@@ -6,6 +6,8 @@ using System.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
 using System.Globalization;
+using Newtonsoft.Json;
+
 
 namespace Address_book
 {
@@ -230,6 +232,7 @@ namespace Address_book
 
         public string FilePath = @"D:\new1\bridgelabz_fellowship\Address_book\Address_book\StoredContact.txt";
         public string CSVPath = @"D:\new1\bridgelabz_fellowship\Address_book\Address_book\CSVFileData.csv";
+        public string JSONPath = @"D:\new1\bridgelabz_fellowship\Address_book\Address_book\AddressRecord.json";
 
         /// <summary>
         /// write the data using file IO
@@ -309,8 +312,26 @@ namespace Address_book
             }
         }
 
+        /// <summary>
+        /// write to file using JSON
+        /// </summary>
+        /// <param name="addressBookDictionary"></param>
+        public void WriteToFileJSON()
+        {
+            //perfroming serialization on inventoryList
+            string json = JsonConvert.SerializeObject(listcontacts);
+            Console.WriteLine("\nSuccessfully added to JSON file.");
+        }
+        public void ReadFromFileJSON()
+        {
+            //Contacts contact = JsonConvert.DeserializeObject<Contacts>(File.ReadAllText(JSONPath));
+            List<Contacts> returnDataObj = JsonConvert.DeserializeObject<List<Contacts>>(File.ReadAllText(JSONPath));
+            Console.WriteLine(returnDataObj.ToString());
+        }
 
-
-
+        public void convertToJson()
+        {
+            JSON.WriteToJson(addressBook);
+        }
     }
 }
